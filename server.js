@@ -1,7 +1,12 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const openapiSpec = require("./openapi.json");
 
 const app = express();
 const PORT = 3000;
+
+// Interactive API docs — reads openapi.json and renders "Try it out" for every endpoint
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpec));
 
 // Parse JSON request bodies (needed for POST/PUT below) into req.body
 app.use(express.json());
