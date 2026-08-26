@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
+// Parse JSON request bodies (needed for POST/PUT below) into req.body
+app.use(express.json());
+
 // --- In-memory "database" -------------------------------------------------
 // Real database comes in Week 3. For now this array *is* the data store.
 // Restarting the server wipes it back to these 3 seed tasks.
@@ -42,6 +45,27 @@ app.get("/tasks/:id", (req, res) => {
   }
 
   res.json(task);
+});
+
+// --- Create ------------------------------------------------------------
+
+// POST /tasks - create a new task. Body: { "title": "Buy milk" }
+app.post("/tasks", (req, res) => {
+  const { title } = req.body || {};
+
+  // The server never trusts the client: validate before doing anything.
+  if (!title || typeof title !== "string" || title.trim() === "") {
+    return res.status(400).json({ error: "title is required and cannot be empty" });
+  }
+
+  const newTask = {
+    id: nextId++,
+    title: title.trim(),
+    done: false,
+  };
+
+  tasks.push(newTask);
+  res.status(201).json(newTask);
 });
 
 app.listen(PORT, () => {
