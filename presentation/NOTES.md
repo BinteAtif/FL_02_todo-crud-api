@@ -35,9 +35,10 @@
 
 ## What is real vs. what is a mockup
 
-- The **logo mark was recreated** as vector artwork in the same cyan/hexagon/cloud
-  language as the site — the site's image assets could not be downloaded in this
-  environment.
+- The **logo is the official CSS Cloud Software Solutions mark** supplied by the client
+  (transparent cut-out, with a dark-letterform variant used on light interface
+  backgrounds). It appears in the opening reveal, the website mockup, the storefront
+  header, the mobile app header and the closing scene.
 - The **e-commerce interface is a designed mockup** (`shop.css.cloud`), rendered from
   scratch. Product names, prices and order numbers are sample data for demonstration.
   It is not a screenshot of a live store.
